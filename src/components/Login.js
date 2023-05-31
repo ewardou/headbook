@@ -1,9 +1,20 @@
 import React, { useState } from 'react';
 import '../styles/login.css';
+import Signup from './Signup';
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [pwd, setPwd] = useState('');
+    const [visible, setVisible] = useState(false);
+
+    const openModal = (e) => {
+        e.preventDefault();
+        setVisible(true);
+    };
+    const closeModal = (e) => {
+        e.preventDefault();
+        setVisible(false);
+    };
 
     return (
         <div className="login">
@@ -28,10 +39,13 @@ export default function Login() {
                     onChange={(e) => setPwd(e.target.value)}
                 />
                 <button type="submit">Log in</button>
-                <a href="/sign-up">Create new account</a>
+                <button type="button" onClick={openModal}>
+                    Create new account
+                </button>
                 <button type="button">Log in with Facebook</button>
                 <button type="button">Continue as guest</button>
             </form>
+            <Signup visible={visible} closeModal={closeModal} />
         </div>
     );
 }
