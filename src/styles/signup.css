@@ -43,3 +43,6 @@
     width:200px;
     flex: 1;
 }
+.overlay button:disabled{
+    background-color: rgb(221, 252, 175);
+}
