@@ -46,3 +46,6 @@
 .overlay button:disabled{
     background-color: rgb(221, 252, 175);
 }
+.error-msg{
+    margin:0 auto
+}

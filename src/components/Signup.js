@@ -10,13 +10,44 @@ export default function Signup({ visible, closeModal }) {
     const [message, setMessage] = useState('');
     const [disabled, setDisabled] = useState(false);
 
+    const registerUser = async () => {
+        try {
+            const response = await fetch(
+                'https://headbook-7930.onrender.com/sign-up',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        firstName,
+                        lastName,
+                        email,
+                        password,
+                        passwordConfirm,
+                    }),
+                }
+            );
+            const json = await response.json();
+            if (!response.ok) {
+                throw json.errors;
+            }
+            localStorage.setItem('token', json.token);
+            window.location.assign('/');
+        } catch (err) {
+            setDisabled(false);
+            setMessage(err[0].msg);
+        }
+    };
+
     const onSubmit = (e) => {
         e.preventDefault();
         if (password !== passwordConfirm) {
             setMessage('Password are not equal');
         } else {
-            setMessage('Form submitted');
+            setMessage('Creating user');
             setDisabled(true);
+            registerUser();
         }
     };
     return (
@@ -68,7 +99,7 @@ export default function Signup({ visible, closeModal }) {
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             required
                         />
-                        <p>{message}</p>
+                        <p className="error-msg">{message}</p>
                         <button type="submit" disabled={disabled}>
                             Sign up
                         </button>
