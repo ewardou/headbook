@@ -16,8 +16,7 @@ export default function Login() {
         e.preventDefault();
         setVisible(false);
     };
-    const logUser = async (e) => {
-        e.preventDefault();
+    const logUser = async (body) => {
         try {
             const response = await fetch(
                 'https://headbook-7930.onrender.com/login',
@@ -26,10 +25,7 @@ export default function Login() {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({
-                        email,
-                        password: pwd,
-                    }),
+                    body: JSON.stringify(body),
                 }
             );
             const json = await response.json();
@@ -52,7 +48,12 @@ export default function Login() {
                     life.
                 </p>
             </div>
-            <form onSubmit={logUser}>
+            <form
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    logUser({ email, password: pwd });
+                }}
+            >
                 <input
                     type="email"
                     placeholder="Email address"
@@ -70,7 +71,18 @@ export default function Login() {
                 <button type="button" onClick={openModal}>
                     Create new account
                 </button>
-                <button type="button">Continue as guest</button>
+                <button
+                    type="button"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        logUser({
+                            email: 'guest@user.com',
+                            password: 'letmeinplease',
+                        });
+                    }}
+                >
+                    Continue as guest
+                </button>
             </form>
             <Signup visible={visible} closeModal={closeModal} />
         </div>
