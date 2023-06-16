@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../styles/people.css';
 
 export default function People() {
     const [permission, setPermission] = useState(false);
@@ -33,11 +34,15 @@ export default function People() {
     }, []);
 
     return permission ? (
-        <div>
+        <div className="people">
             {content.map((el) => (
-                <p key={el._id}>
-                    {el.firstName} {el.lastName}
-                </p>
+                <div key={el._id}>
+                    <img src={el.profilePicture} alt="" />
+                    <p>
+                        {el.firstName} {el.lastName}
+                    </p>
+                    <button type="button">Add friend</button>
+                </div>
             ))}
         </div>
     ) : (
