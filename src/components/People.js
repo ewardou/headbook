@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/people.css';
+import ReactLoading from 'react-loading';
 
 export default function People() {
     const [permission, setPermission] = useState(false);
@@ -46,6 +47,6 @@ export default function People() {
             ))}
         </div>
     ) : (
-        <h1>Loading</h1>
+        <ReactLoading type="spin" color="#722F37" className="loading" />
     );
 }

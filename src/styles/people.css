@@ -33,3 +33,7 @@
 .people > div button:hover {
     background-color: #945e64;
 }
+.loading {
+    margin: 40px auto;
+    display: block;
+}
