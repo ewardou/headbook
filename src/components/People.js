@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/people.css';
 import ReactLoading from 'react-loading';
+import { useOutletContext } from 'react-router-dom';
+import RequestButton from './RequestButton';
 
 export default function People() {
     const [permission, setPermission] = useState(false);
     const [content, setContent] = useState([]);
+    const user = useOutletContext();
     async function getPermission() {
         try {
             const response = await fetch(
@@ -42,7 +45,12 @@ export default function People() {
                     <p>
                         {el.firstName} {el.lastName}
                     </p>
-                    <button type="button">Add friend</button>
+                    {user.friends.includes(el._id) ? null : (
+                        <RequestButton
+                            id={el._id}
+                            requestsArray={el.requests}
+                        />
+                    )}
                 </div>
             ))}
         </div>
