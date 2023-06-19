@@ -1,9 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import homeSVG from '../icons/home.svg';
 import groupSVG from '../icons/group.svg';
 
 function Home() {
+    const [profilePicture, setProfilePicture] = useState(
+        'https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg'
+    );
+    const [user, setUser] = useState(null);
+
+    async function getMyUserInfo() {
+        try {
+            const response = await fetch(
+                'https://headbook-7930.onrender.com/my-profile',
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem(
+                            'token'
+                        )}`,
+                    },
+                }
+            );
+            const json = await response.json();
+            setUser(json);
+            setProfilePicture(json.profilePicture);
+        } catch (e) {
+            window.location.assign('/login');
+        }
+    }
+
+    useEffect(() => {
+        getMyUserInfo();
+    }, []);
+
     return (
         <div>
             <header>
@@ -17,13 +46,10 @@ function Home() {
                     <img src={groupSVG} alt="People icon" />
                 </Link>
                 <Link to="my-profile">
-                    <img
-                        src="https://i.pinimg.com/originals/f1/0f/f7/f10ff70a7155e5ab666bcdd1b45b726d.jpg"
-                        alt="My profile"
-                    />
+                    <img src={profilePicture} alt="My profile" />
                 </Link>
             </header>
-            <Outlet />
+            <Outlet context={user} />
         </div>
     );
 }
