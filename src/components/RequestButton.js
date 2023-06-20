@@ -3,7 +3,7 @@ import { useOutletContext } from 'react-router-dom';
 
 export default function RequestButton({ id, requestsArray }) {
     const [requestSent, setRequestSent] = useState(false);
-    const user = useOutletContext();
+    const { user } = useOutletContext();
 
     function checkRequestState() {
         if (requestsArray.includes(user._id)) {

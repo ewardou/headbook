@@ -49,7 +49,7 @@ function Home() {
                     <img src={profilePicture} alt="My profile" />
                 </Link>
             </header>
-            <Outlet context={user} />
+            {user ? <Outlet context={{ user, getMyUserInfo }} /> : null}
         </div>
     );
 }
