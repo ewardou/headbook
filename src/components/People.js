@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/people.css';
 import ReactLoading from 'react-loading';
-import { useOutletContext } from 'react-router-dom';
-import RequestButton from './RequestButton';
+import { useOutletContext, Link, Outlet } from 'react-router-dom';
+import friendsIcon from '../icons/friends.svg';
+import requestIcon from '../icons/request.svg';
+import suggestionsIcon from '../icons/suggestion.svg';
 
 export default function People() {
     const [permission, setPermission] = useState(false);
     const [content, setContent] = useState([]);
-    const user = useOutletContext();
+    const { user, getMyUserInfo } = useOutletContext();
     async function getPermission() {
         try {
             const response = await fetch(
@@ -39,20 +41,18 @@ export default function People() {
 
     return permission ? (
         <div className="people">
-            {content.map((el) => (
-                <div key={el._id}>
-                    <img src={el.profilePicture} alt="" />
-                    <p>
-                        {el.firstName} {el.lastName}
-                    </p>
-                    {user.friends.includes(el._id) ? null : (
-                        <RequestButton
-                            id={el._id}
-                            requestsArray={el.requests}
-                        />
-                    )}
-                </div>
-            ))}
+            <nav>
+                <Link to="/people">
+                    <img src={suggestionsIcon} alt="" /> Suggestions
+                </Link>
+                <Link to="friends">
+                    <img src={friendsIcon} alt="" /> Friends
+                </Link>
+                <Link to="requests">
+                    <img src={requestIcon} alt="" /> Friend requests
+                </Link>
+            </nav>
+            <Outlet context={{ user, content, getMyUserInfo }} />
         </div>
     ) : (
         <ReactLoading type="spin" color="#722F37" className="loading" />
