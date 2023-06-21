@@ -4,6 +4,9 @@ import Login from './Login';
 import Home from './Home';
 import People from './People';
 import Posts from './Posts';
+import Requests from './Requests';
+import Friends from './Friends';
+import Suggestions from './Suggestions';
 
 function RouteSwitch() {
     return (
@@ -11,7 +14,11 @@ function RouteSwitch() {
             <Routes>
                 <Route path="/" element={<Home />}>
                     <Route path="" element={<Posts />} />
-                    <Route path="people" element={<People />} />
+                    <Route path="people" element={<People />}>
+                        <Route path="" element={<Suggestions />} />
+                        <Route path="requests" element={<Requests />} />
+                        <Route path="friends" element={<Friends />} />
+                    </Route>
                 </Route>
                 <Route path="/login" element={<Login />} />
             </Routes>
