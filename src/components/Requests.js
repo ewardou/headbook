@@ -70,5 +70,5 @@ export default function Requests() {
     if (requests.length === 0) {
         return <h1>No pending requests</h1>;
     }
-    return <div>{requests}</div>;
+    return <div className="people-cards">{requests}</div>;
 }

@@ -1,13 +1,13 @@
-.people > div img {
+.people-cards > div img {
     width: 80px;
     height: 80px;
     border-radius: 50%;
     object-fit: contain;
 }
-.people{
+.people-cards{
     padding: 0px 10px;
 }
-.people > div {
+.people-cards > div {
     display: flex;
     align-items: center;
     gap:5px;
@@ -18,11 +18,11 @@
     background-color: #fff;
     box-shadow: 0px 1px 2px 0px gray;
 }
-.people > div p {
+.people-cards > div p {
     flex: 1;
 }
 
-.people > div button {
+.people-cards > div button {
     background-color: #722F37;
     color: #eee;
     padding: 8px 16px;
@@ -33,23 +33,70 @@
     border-radius: 5px;
 }
 
-.people > div button:hover {
+.people-cards > div button:hover {
     background-color: #945e64;
 }
 .loading {
     margin: 40px auto;
     display: block;
 }
+.people{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    flex: 1;
+}
+.people nav{
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow: 0px 1px 2px gray;
+}
+.people nav a{
+    text-decoration: none;
+    color: black;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    gap: 5px;
+}
+.people nav a:hover{
+    background-color: #bb858b;
+}
+.people nav img {
+    height: 30px;
+    width: auto;
+}
+
+@media (max-width:600px) {
+    .people{
+        display: flex;
+        flex-direction: column;
+    }
+    .people nav{
+        display: flex;
+        gap: 5px;
+        flex-direction: row;
+        background-color: transparent;
+        box-shadow: none;
+        justify-content: center;
+        flex-wrap: wrap;
+    }    
+    .people nav img {
+        height: 25px;
+        width: auto;
+    }    
+}
 
 @media (max-width: 450px) {
-    .people > div img {
+    .people-cards > div img {
         width: 70px;
         height: 70px;
     }    
-    .people *{
+    .people-cards *{
         font-size: 1.2rem;
     }
-    .people > div button {
+    .people-cards > div button {
         padding: 5px 10px;
     }    
 }

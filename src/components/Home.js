@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link } from 'react-router-dom';
+import ReactLoading from 'react-loading';
 import homeSVG from '../icons/home.svg';
 import groupSVG from '../icons/group.svg';
 
@@ -49,7 +50,11 @@ function Home() {
                     <img src={profilePicture} alt="My profile" />
                 </Link>
             </header>
-            {user ? <Outlet context={{ user, getMyUserInfo }} /> : null}
+            {user ? (
+                <Outlet context={{ user, getMyUserInfo }} />
+            ) : (
+                <ReactLoading type="spin" color="#722F37" className="loading" />
+            )}
         </div>
     );
 }

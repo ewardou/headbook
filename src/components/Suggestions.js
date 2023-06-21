@@ -7,7 +7,7 @@ export default function Suggestions() {
     const array = content.filter((el) => !user.friends.includes(el._id));
 
     return (
-        <div className="people">
+        <div className="people-cards">
             {array.map((el) => (
                 <div key={el._id}>
                     <img src={el.profilePicture} alt="" />

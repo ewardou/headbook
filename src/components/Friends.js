@@ -12,5 +12,5 @@ export default function Friends() {
             </p>
         </div>
     ));
-    return <div>{friends}</div>;
+    return <div className="people-cards">{friends}</div>;
 }
