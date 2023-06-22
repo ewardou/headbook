@@ -50,12 +50,13 @@ header > a:last-of-type img{
     font-weight: bold;
     font-size: 2.5rem;
 }
-.login{
+#root > .login{
     background-color: #f0f2f5;
     min-height: 100vh;
     font-family: Helvetica, sans-serif;
     box-sizing: border-box;
     display: flex;
+    flex-direction: row;
     padding: 30px;
     justify-content: center;
     align-items: center;
@@ -64,15 +65,19 @@ header > a:last-of-type img{
 .login > div{
     max-width: 500px;
 }
+.login h1 {
+    text-align: left;
+    font-size: 3rem;
+}
 p{
     font-size: 1.5rem;
     text-align: left;
 }
 h1{
     color: #722F37;
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bold;
-    text-align: left;
+    text-align: center;
 }
 
 form{
@@ -114,20 +119,20 @@ input:focus{
 }
 
 @media (max-width:650px) {
-    .login{
+    #root .login{
         flex-direction: column;
         gap: 50px;
     }
-    h1{
+    .login h1{
         text-align: center;
     }
-    p{
+    .login p{
         text-align: center;
     }
-    form > button:first-of-type{
+    .login form > button:first-of-type{
         font-size: 1rem;
     }
-    input{
+    .login input{
         font-size: 1rem;
     }
 }
