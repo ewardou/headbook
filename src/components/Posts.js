@@ -1,5 +1,11 @@
 import React from 'react';
+import NewPost from './NewPost';
 
 export default function Posts() {
-    return <div>Posts</div>;
+    return (
+        <div>
+            <NewPost />
+            <p>Posts</p>
+        </div>
+    );
 }

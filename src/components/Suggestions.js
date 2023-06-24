@@ -8,6 +8,7 @@ export default function Suggestions() {
 
     return (
         <div className="people-cards">
+            <h1>People you might know</h1>
             {array.map((el) => (
                 <div key={el._id}>
                     <img src={el.profilePicture} alt="" />

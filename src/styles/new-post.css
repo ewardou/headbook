@@ -31,7 +31,7 @@
     border: none;
     outline: none;
 }
-.new-post button{
+.new-post form button{
     margin-left: auto;
     display: block;
     border-radius: 15px;
@@ -41,10 +41,14 @@
     cursor: pointer;
     background-color: #722F37;
     border: none;
+    width: fit-content;
     color: white;
 }
 .new-post button:hover{
     background-color: #bb858b;
+}
+.new-post form {
+    all:unset;
 }
 .new-post:focus-within{
     outline: #bb858b 2px solid;
