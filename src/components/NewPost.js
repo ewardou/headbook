@@ -26,7 +26,6 @@ export default function NewPost() {
             }
             setContent('');
         } catch (e) {
-            // window.location.assign('/login');
             console.error(e);
         }
     }
