@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/like-button.css';
+import { useOutletContext } from 'react-router-dom';
 
 export default function LikeButton({ postID, likes }) {
     const [liked, setLiked] = useState(false);
     const [numberOfLikes, setNumberOfLikes] = useState(likes);
+    const { user, getMyUserInfo } = useOutletContext();
+
     async function likePost() {
         const response = await fetch(
             `https://headbook-7930.onrender.com/${
@@ -25,8 +28,19 @@ export default function LikeButton({ postID, likes }) {
                 setNumberOfLikes((prevState) => prevState + 1);
             }
             setLiked((prevState) => !prevState);
+            await getMyUserInfo();
         }
     }
+
+    async function checkLikedPosts() {
+        if (user.likes.includes(postID)) {
+            setLiked(true);
+        }
+    }
+
+    useEffect(() => {
+        checkLikedPosts();
+    }, []);
 
     return (
         <div className="like-container">
