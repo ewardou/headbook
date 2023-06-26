@@ -1,0 +1,92 @@
+.comments > button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+.comments > button > span{
+    font-size: 1.4rem;
+}
+.comments{
+    margin-left: auto;
+    width: 100%;
+}
+.comments div p{
+    font-size: 0.9rem;
+}
+
+.comments .visible{
+    display: block;
+}
+
+.comments > div {
+    padding-top: 15px;
+    display: none;
+    border-top: 1px solid gray;
+}
+.comments .like-container{
+    transform: scale(1);
+}
+
+.comments form{
+    all: unset;
+}
+
+.comments form button{
+    all: unset;
+    margin-left: auto;
+    display: block;
+    border-radius: 15px;
+    padding: 4px 8px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+    background-color: #722F37;
+    border: none;
+    width: fit-content;
+    color: white;
+}
+.comments textarea{
+    width: 100%;
+    background-color: #ddd;
+    font-family: inherit;
+    border-radius: 15px;
+    padding: 5px;
+    resize: none;
+    border: none;
+    font-size: 0.9rem;
+}
+
+.comments textarea:focus{
+    outline: #bb858b 1px solid
+}
+.comments div img{
+    height: 35px;
+    width: 35px;
+}
+
+.user-comment{
+    display: flex;
+    gap:5px;
+    margin-top: 12px;
+}
+.user-comment div {
+    display: flex;
+}
+.user-comment  div > p:nth-of-type(2){
+    font-size: 0.8rem;
+    margin-left: 10px;
+}
+.user-comment  div > p:first-of-type{
+    font-weight: bold;
+}
+.user-comment > span{
+    background-color: #eee;
+    display: inline-block;
+    border-radius: 15px;
+    padding: 8px;
+    flex: 1;
+}
