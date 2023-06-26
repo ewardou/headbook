@@ -3,6 +3,7 @@ import ReactLoading from 'react-loading';
 import { DateTime } from 'luxon';
 import NewPost from './NewPost';
 import LikeButton from './LikeButton';
+import Comments from './Comments';
 import '../styles/post.css';
 
 export default function Posts() {
@@ -22,7 +23,7 @@ export default function Posts() {
                 }
             );
             const json = await response.json();
-            setPosts(json);
+            setPosts(json.reverse());
         } catch (e) {
             window.location.assign('/login');
         }
@@ -38,7 +39,7 @@ export default function Posts() {
 
     if (posts) {
         return (
-            <div>
+            <div className="posts">
                 <NewPost />
                 <div>
                     {posts.map((post) => (
@@ -53,8 +54,14 @@ export default function Posts() {
                                     <p>{formatDate(post.date)}</p>
                                 </div>
                             </div>
-                            <p>{post.content}</p>
-                            <LikeButton likes={post.likes} postID={post._id} />
+                            <p style={{ margin: '10px 0px' }}>{post.content}</p>
+                            <div className="buttons">
+                                <LikeButton
+                                    likes={post.likes}
+                                    postID={post._id}
+                                />
+                                <Comments postID={post._id} />
+                            </div>
                         </div>
                     ))}
                 </div>
