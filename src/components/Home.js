@@ -46,7 +46,7 @@ function Home() {
                 <Link to="people">
                     <img src={groupSVG} alt="People icon" />
                 </Link>
-                <Link to="my-profile">
+                <Link to={user ? `profiles/${user._id}` : null}>
                     <img src={profilePicture} alt="My profile" />
                 </Link>
             </header>

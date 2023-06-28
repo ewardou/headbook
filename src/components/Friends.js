@@ -12,5 +12,6 @@ export default function Friends() {
             </p>
         </div>
     ));
+    if (friends.length === 0) return <h1>No friends added yet</h1>;
     return <div className="people-cards">{friends}</div>;
 }
