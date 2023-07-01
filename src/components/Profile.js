@@ -49,6 +49,10 @@ export default function Profile() {
                     </p>
                 </div>
                 <div>
+                    <h1>About me</h1>
+                    <p>{userProfile.aboutMe}</p>
+                </div>
+                <div>
                     <h1>Friends</h1>
                     <div>
                         {userProfile.friends.map((friend) => (
