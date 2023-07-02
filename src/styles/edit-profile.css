@@ -44,3 +44,11 @@
 .edit-profile form button{
     background-color: #722F37;
 }
+.edit-profile form button:disabled{
+    background-color: #ceb6b8;
+}
+
+.edit-profile .loading{
+    margin:0;
+}
+
