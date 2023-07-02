@@ -4,12 +4,22 @@ import ReactLoading from 'react-loading';
 import PostCards from './PostCards';
 import editSVG from '../icons/edit.svg';
 import '../styles/profile.css';
+import EditProfile from './EditProfile';
 
 export default function Profile() {
     const [userProfile, setUserProfile] = useState(null);
     const [userPosts, setUserPosts] = useState(null);
+    const [editProfileVisible, setEditProfileVisible] = useState(false);
     const { userID } = useParams();
     const { user } = useOutletContext();
+
+    const openModal = () => {
+        setEditProfileVisible(true);
+    };
+
+    const closeModal = () => {
+        setEditProfileVisible(false);
+    };
 
     async function getInformation() {
         const response = await fetch(
@@ -39,7 +49,7 @@ export default function Profile() {
                     <div>
                         <img src={userProfile.profilePicture} alt="" />
                         {userID === user._id ? (
-                            <button type="button">
+                            <button type="button" onClick={openModal}>
                                 <img src={editSVG} alt="edit icon" />
                             </button>
                         ) : null}
@@ -76,6 +86,12 @@ export default function Profile() {
                         <p style={{ textAlign: 'center' }}>No posts yet</p>
                     )}
                 </div>
+                <EditProfile
+                    curBio={userProfile.aboutMe}
+                    editProfileVisible={editProfileVisible}
+                    closeModal={closeModal}
+                    getInformation={getInformation}
+                />
             </div>
         );
     }
