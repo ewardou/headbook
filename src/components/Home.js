@@ -53,7 +53,16 @@ function Home() {
             {user ? (
                 <Outlet context={{ user, getMyUserInfo }} />
             ) : (
-                <ReactLoading type="spin" color="#722F37" className="loading" />
+                <div>
+                    <ReactLoading
+                        type="spin"
+                        color="#722F37"
+                        className="loading"
+                    />
+                    <p style={{ textAlign: 'center' }}>
+                        Waiting for Render to initialize server...
+                    </p>
+                </div>
             )}
         </div>
     );
