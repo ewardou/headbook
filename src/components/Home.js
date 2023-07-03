@@ -3,6 +3,7 @@ import { Outlet, Link } from 'react-router-dom';
 import ReactLoading from 'react-loading';
 import homeSVG from '../icons/home.svg';
 import groupSVG from '../icons/group.svg';
+import ProfileModal from './ProfileModal';
 
 function Home() {
     const [profilePicture, setProfilePicture] = useState(
@@ -46,9 +47,7 @@ function Home() {
                 <Link to="people">
                     <img src={groupSVG} alt="People icon" />
                 </Link>
-                <Link to={user ? `profiles/${user._id}` : null}>
-                    <img src={profilePicture} alt="My profile" />
-                </Link>
+                <ProfileModal user={user} profilePicture={profilePicture} />
             </header>
             {user ? (
                 <Outlet context={{ user, getMyUserInfo }} />
