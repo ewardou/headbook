@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import '../styles/profile-modal.css';
 
 export default function ProfileModal({ user, profilePicture }) {
     const [visible, setVisible] = useState(false);
@@ -19,7 +20,10 @@ export default function ProfileModal({ user, profilePicture }) {
                 <img src={profilePicture} alt="My profile" />
             </button>
             <div className={visible ? 'visible' : ''}>
-                <Link to={user ? `profiles/${user._id}` : null}>
+                <Link
+                    to={user ? `profiles/${user._id}` : null}
+                    onClick={showModal}
+                >
                     My profile
                 </Link>
                 <button type="button" onClick={logOut}>
