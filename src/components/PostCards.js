@@ -22,6 +22,20 @@ export default function PostCards({ posts }) {
                         </div>
                     </div>
                     <p style={{ margin: '10px 0px' }}>{post.content}</p>
+                    {post.image ? (
+                        <img
+                            src={post.image}
+                            alt=""
+                            style={{
+                                width: 'auto',
+                                maxWidth: '90%',
+                                height: 'auto',
+                                borderRadius: '0',
+                                margin: '0 auto',
+                                display: 'block',
+                            }}
+                        />
+                    ) : null}
                     <div className="buttons">
                         <LikeButton likes={post.likes} postID={post._id} />
                         <Comments postID={post._id} />
