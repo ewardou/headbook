@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/login.css';
+import ReactLoading from 'react-loading';
 import Signup from './Signup';
 
 export default function Login() {
@@ -7,6 +8,7 @@ export default function Login() {
     const [pwd, setPwd] = useState('');
     const [visible, setVisible] = useState(false);
     const [message, setMessage] = useState('');
+    const [disabled, setDisabled] = useState(false);
 
     const openModal = (e) => {
         e.preventDefault();
@@ -18,6 +20,7 @@ export default function Login() {
     };
     const logUser = async (body) => {
         try {
+            setDisabled(true);
             const response = await fetch(
                 'https://headbook-7930.onrender.com/login',
                 {
@@ -33,9 +36,11 @@ export default function Login() {
                 throw json.msg;
             }
             localStorage.setItem('token', json.token);
+            setDisabled(false);
             window.location.assign('/');
         } catch (err) {
             setMessage(err);
+            setDisabled(false);
         }
     };
 
@@ -80,8 +85,19 @@ export default function Login() {
                             password: 'letmeinplease',
                         });
                     }}
+                    disabled={disabled}
                 >
-                    Continue as guest
+                    {disabled ? (
+                        <ReactLoading
+                            type="spin"
+                            color="#fff"
+                            className="loading"
+                            height={25}
+                            width={25}
+                        />
+                    ) : (
+                        'Continue as guest'
+                    )}
                 </button>
             </form>
             <Signup visible={visible} closeModal={closeModal} />

@@ -95,11 +95,17 @@ form > button{
     padding: 5px;
     width: fit-content;
 }
+form > button:hover{
+    background-color: #6fdf59;
+}
 form > button:first-of-type{
     background-color: #1877f2;
     padding: 10px 5px;
     font-size: 1.3rem;
     width: 100%;
+}
+form > button:first-of-type:hover{
+    background-color: #5da0f9;
 }
 input{
     font-size: 1.3rem;
@@ -110,6 +116,9 @@ input{
 input:focus{
     outline: #539af8 1px solid;
     border-color: transparent;
+}
+.login .loading{
+    margin: 0;
 }
 
 @media (max-width:650px) {
