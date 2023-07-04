@@ -38,7 +38,13 @@ export default function ImageInput() {
                     onChange={checkInput}
                 />
             </label>
-            <p style={{ textAlign: 'center', marginTop: '10px' }}>
+            <p
+                style={{
+                    textAlign: 'center',
+                    marginTop: '10px',
+                    fontSize: '1rem',
+                }}
+            >
                 {imageInputMsg}
             </p>
         </div>
@@ -57,5 +63,6 @@ export async function uploadPic() {
         file: file.files[0],
         fileName: file.files[0].name,
     });
+    file.value = '';
     return response.url;
 }

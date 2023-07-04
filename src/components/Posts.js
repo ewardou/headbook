@@ -34,7 +34,7 @@ export default function Posts() {
     if (posts) {
         return (
             <div className="posts">
-                <NewPost />
+                <NewPost getPosts={getPosts} />
                 <PostCards posts={posts} />
             </div>
         );

@@ -31,3 +31,7 @@
     display: block;
     position: relative;
 }
+
+.posts{
+    padding: 10px;
+}
