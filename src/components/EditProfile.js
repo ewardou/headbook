@@ -1,14 +1,8 @@
 import React, { useState } from 'react';
-import ImageKit from 'imagekit-javascript';
 import ReactLoading from 'react-loading';
 import '../styles/edit-profile.css';
 import { useOutletContext } from 'react-router-dom';
-
-const imagekit = new ImageKit({
-    publicKey: process.env.REACT_APP_IMAGEKIT_PUBLIC_KEY,
-    urlEndpoint: process.env.REACT_APP_IMAGEKIT_URL_ENDPOINT,
-    authenticationEndpoint: 'https://headbook-7930.onrender.com/upload-auth',
-});
+import ImageInput, { uploadPic } from './ImageInput';
 
 export default function EditProfile({
     curBio,
@@ -19,16 +13,6 @@ export default function EditProfile({
     const [bio, setBio] = useState(curBio);
     const [disabled, setDisabled] = useState(false);
     const { getMyUserInfo } = useOutletContext();
-
-    async function uploadPic() {
-        const file = document.querySelector("input[type='file']");
-        if (file.files.length === 0) return null;
-        const response = await imagekit.upload({
-            file: file.files[0],
-            fileName: file.files[0].name,
-        });
-        return response.url;
-    }
 
     async function updateProfile() {
         setDisabled(true);
@@ -65,7 +49,7 @@ export default function EditProfile({
                     X
                 </button>
                 <p>Change profile picture</p>
-                <input type="file" />
+                <ImageInput />
                 <p>Update bio</p>
                 <input
                     type="text"
