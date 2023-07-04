@@ -1,0 +1,14 @@
+#image-input {
+    display: none;
+}
+
+label[for="image-input"]{
+    padding: 5px;
+    cursor: pointer;
+    background-color: #aba9a9;
+    border-radius: 8px;
+}
+
+label[for="image-input"]:hover{
+    background-color: #ccc9c9;
+}

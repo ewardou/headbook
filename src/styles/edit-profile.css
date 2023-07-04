@@ -7,14 +7,20 @@
     left: 0;
     z-index: 2;
     pointer-events: all;
+    padding: 15px;
     transform: scale(0);
     transition: transform 200ms ease-in-out;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .edit-profile.visible{
     transform: scale(1);
+}
+
+.edit-profile form > p{
+    font-weight: bold;
 }
 
 .edit-profile form {
