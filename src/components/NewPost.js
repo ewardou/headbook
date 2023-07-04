@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
+import ImageInput, { uploadPic } from './ImageInput';
 import '../styles/new-post.css';
 
-export default function NewPost() {
+export default function NewPost({ getPosts }) {
     const { user } = useOutletContext();
     const [content, setContent] = useState('');
 
     async function createPost() {
         try {
+            const image = await uploadPic();
             const response = await fetch(
                 'https://headbook-7930.onrender.com/new-post',
                 {
@@ -18,13 +20,14 @@ export default function NewPost() {
                         )}`,
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ content }),
+                    body: JSON.stringify({ content, image }),
                 }
             );
             if (!response.ok) {
                 throw response;
             }
             setContent('');
+            getPosts();
         } catch (e) {
             console.error(e);
         }
@@ -50,7 +53,12 @@ export default function NewPost() {
                     onChange={(e) => setContent(e.target.value)}
                     required
                 />
-                <button type="submit">Post</button>
+                <div
+                    style={{ display: 'flex', justifyContent: 'space-between' }}
+                >
+                    <ImageInput />
+                    <button type="submit">Post</button>
+                </div>
             </form>
         </div>
     );
