@@ -7,8 +7,11 @@
 .post-card p{
     font-size: 1.1rem;
 }
-.post-card  > div > div > p:first-of-type{
+.post-card  > div > div > a{
     font-weight: bold;
+    color: black;
+    text-decoration: none;
+    font-size: 1.1rem;
 }
 .post-card{
     padding: 10px;
@@ -24,7 +27,7 @@
     gap: 5px;
 }
 
-.post-card > div > div > p:nth-of-type(2){
+.post-card > div > div > p{
     font-size: 0.9rem;
 } 
 .buttons{

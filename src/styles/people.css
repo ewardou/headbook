@@ -18,8 +18,13 @@
     background-color: #fff;
     box-shadow: 0px 1px 2px 0px gray;
 }
-.people-cards > div p {
+.people-cards > div a {
     flex: 1;
+    text-decoration: none;
+    color: black;
+}
+.people-cards > div a:hover {
+    text-decoration:underline;
 }
 
 .people-cards > div button {

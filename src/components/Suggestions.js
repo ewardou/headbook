@@ -1,5 +1,5 @@
 import React from 'react';
-import { useOutletContext } from 'react-router-dom';
+import { useOutletContext, Link } from 'react-router-dom';
 import RequestButton from './RequestButton';
 
 export default function Suggestions() {
@@ -12,9 +12,11 @@ export default function Suggestions() {
             {array.map((el) => (
                 <div key={el._id}>
                     <img src={el.profilePicture} alt="" />
-                    <p>
-                        {el.firstName} {el.lastName}
-                    </p>
+                    <Link to={`/profiles/${el._id}`}>
+                        <p>
+                            {el.firstName} {el.lastName}
+                        </p>
+                    </Link>
                     <RequestButton id={el._id} requestsArray={el.requests} />
                 </div>
             ))}

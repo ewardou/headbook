@@ -1,5 +1,6 @@
 import React from 'react';
 import { DateTime } from 'luxon';
+import { Link } from 'react-router-dom';
 import LikeButton from './LikeButton';
 import Comments from './Comments';
 
@@ -15,9 +16,9 @@ export default function PostCards({ posts }) {
                     <div>
                         <img src={post.author.profilePicture} alt="" />
                         <div>
-                            <p>
+                            <Link to={`/profiles/${post.author._id}`}>
                                 {post.author.firstName} {post.author.lastName}
-                            </p>
+                            </Link>
                             <p>{formatDate(post.date)}</p>
                         </div>
                     </div>
