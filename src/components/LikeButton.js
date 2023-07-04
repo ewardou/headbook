@@ -6,8 +6,10 @@ export default function LikeButton({ postID, likes }) {
     const [liked, setLiked] = useState(false);
     const [numberOfLikes, setNumberOfLikes] = useState(likes);
     const { user, getMyUserInfo } = useOutletContext();
+    const [disabled, setDisabled] = useState(false);
 
     async function likePost() {
+        setDisabled(true);
         const response = await fetch(
             `https://headbook-7930.onrender.com/${
                 liked ? 'dislike' : 'like'
@@ -29,6 +31,7 @@ export default function LikeButton({ postID, likes }) {
             }
             setLiked((prevState) => !prevState);
             await getMyUserInfo();
+            setDisabled(false);
         }
     }
 
@@ -48,6 +51,7 @@ export default function LikeButton({ postID, likes }) {
                 className={liked ? 'like-button liked' : 'like-button'}
                 onClick={likePost}
                 type="button"
+                disabled={disabled}
             >
                 {' '}
             </button>
