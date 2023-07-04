@@ -47,6 +47,9 @@
 .new-post button:hover{
     background-color: #bb858b;
 }
+.new-post button:disabled{
+    background-color: #d7a7ad;
+}
 .new-post form {
     all:unset;
 }
@@ -60,4 +63,8 @@
 
 .new-post textarea::-webkit-scrollbar-thumb {
     background-color: gray;
+}
+
+.new-post .loading{
+    margin: 0;
 }
