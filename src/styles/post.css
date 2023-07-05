@@ -13,6 +13,19 @@
     text-decoration: none;
     font-size: 1.1rem;
 }
+.post-card > div:first-of-type > div {
+    flex: 1;
+}
+
+.post-card > div:first-of-type > button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.post-card > div:first-of-type > button > img{
+    height: 30px;
+    width: 30px;
+}
 .post-card{
     padding: 10px;
     background-color: #fff;

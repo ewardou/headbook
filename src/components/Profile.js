@@ -12,6 +12,7 @@ export default function Profile() {
     const [editProfileVisible, setEditProfileVisible] = useState(false);
     const { userID } = useParams();
     const { user } = useOutletContext();
+    const personalProfile = userID === user._id;
 
     const openModal = () => {
         setEditProfileVisible(true);
@@ -48,7 +49,7 @@ export default function Profile() {
                 <div>
                     <div>
                         <img src={userProfile.profilePicture} alt="" />
-                        {userID === user._id ? (
+                        {personalProfile ? (
                             <button type="button" onClick={openModal}>
                                 <img src={editSVG} alt="edit icon" />
                             </button>
@@ -81,7 +82,11 @@ export default function Profile() {
                 <div>
                     <h1>Posts</h1>
                     {userPosts.length > 0 ? (
-                        <PostCards posts={userPosts} />
+                        <PostCards
+                            posts={userPosts}
+                            personalProfile={personalProfile}
+                            getInformation={getInformation}
+                        />
                     ) : (
                         <p style={{ textAlign: 'center' }}>No posts yet</p>
                     )}

@@ -3,10 +3,25 @@ import { DateTime } from 'luxon';
 import { Link } from 'react-router-dom';
 import LikeButton from './LikeButton';
 import Comments from './Comments';
+import deleteSVG from '../icons/delete.svg';
 
-export default function PostCards({ posts }) {
+export default function PostCards({
+    posts,
+    personalProfile = false,
+    getInformation,
+}) {
     function formatDate(date) {
         return DateTime.fromISO(date).toLocaleString(DateTime.DATETIME_MED);
+    }
+
+    async function deletePost(postID) {
+        await fetch(`https://headbook-7930.onrender.com/posts/${postID}`, {
+            method: 'DELETE',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+        });
+        getInformation();
     }
 
     return (
@@ -21,6 +36,14 @@ export default function PostCards({ posts }) {
                             </Link>
                             <p>{formatDate(post.date)}</p>
                         </div>
+                        {personalProfile ? (
+                            <button
+                                type="button"
+                                onClick={() => deletePost(post._id)}
+                            >
+                                <img src={deleteSVG} alt="Delete icon" />
+                            </button>
+                        ) : null}
                     </div>
                     <p style={{ margin: '10px 0px' }}>{post.content}</p>
                     {post.image ? (
