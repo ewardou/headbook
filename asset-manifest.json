@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/headbook/static/css/main.902a96b0.css",
+    "main.js": "/headbook/static/js/main.0a408d95.js",
+    "static/media/friends.svg": "/headbook/static/media/friends.92e0dd7090ceabf1b8ef71cdb96c9ef5.svg",
+    "static/media/group.svg": "/headbook/static/media/group.098e4486b054584bd68e8078d554aaa4.svg",
+    "index.html": "/headbook/index.html",
+    "static/media/suggestion.svg": "/headbook/static/media/suggestion.17d99ef4a964727ca7455736d7c84c0a.svg",
+    "static/media/delete.svg": "/headbook/static/media/delete.f05750150152458ce152776d9a37a3c9.svg",
+    "static/media/home.svg": "/headbook/static/media/home.4dee3af853367c133fa05cecb785b2be.svg",
+    "static/media/edit.svg": "/headbook/static/media/edit.762a6f2eee2a283e54ce58dbaf4b575f.svg",
+    "static/media/comments.svg": "/headbook/static/media/comments.4aff24bebaf9a85c71afa2f4a433219e.svg",
+    "static/media/request.svg": "/headbook/static/media/request.8a8d398bcf834e39542ac51f1e6dc45f.svg",
+    "main.902a96b0.css.map": "/headbook/static/css/main.902a96b0.css.map",
+    "main.0a408d95.js.map": "/headbook/static/js/main.0a408d95.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.902a96b0.css",
+    "static/js/main.0a408d95.js"
+  ]
+}
