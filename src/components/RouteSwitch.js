@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import Login from './Login';
 import Home from './Home';
 import People from './People';
@@ -11,7 +11,7 @@ import Profile from './Profile';
 
 function RouteSwitch() {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <Routes>
                 <Route path="/" element={<Home />}>
                     <Route path="" element={<Posts />} />
@@ -24,7 +24,7 @@ function RouteSwitch() {
                 </Route>
                 <Route path="/login" element={<Login />} />
             </Routes>
-        </BrowserRouter>
+        </HashRouter>
     );
 }
 
