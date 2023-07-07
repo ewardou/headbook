@@ -37,7 +37,7 @@ export default function Login() {
             }
             localStorage.setItem('token', json.token);
             setDisabled(false);
-            window.location.assign('/');
+            window.location.assign('/headbook');
         } catch (err) {
             setMessage(err);
             setDisabled(false);

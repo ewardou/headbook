@@ -11,7 +11,7 @@ export default function ProfileModal({ user, profilePicture }) {
 
     function logOut() {
         localStorage.removeItem('token');
-        window.location.assign('/login');
+        window.location.assign('/headbook/#/login');
     }
 
     return (

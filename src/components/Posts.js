@@ -23,7 +23,7 @@ export default function Posts() {
             const json = await response.json();
             setPosts(json.reverse());
         } catch (e) {
-            window.location.assign('/login');
+            window.location.assign('/headbook/#/login');
         }
     }
 

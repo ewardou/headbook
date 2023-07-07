@@ -27,7 +27,8 @@ function Home() {
             setUser(json);
             setProfilePicture(json.profilePicture);
         } catch (e) {
-            window.location.assign('/login');
+            window.location.assign('/headbook/#/login');
+            console.log(e);
         }
     }
 

@@ -31,7 +31,7 @@ export default function People() {
                 throw new Error('Log in to access this route');
             }
         } catch (e) {
-            window.location.assign('/login');
+            window.location.assign('/headbook/#/login');
         }
     }
 

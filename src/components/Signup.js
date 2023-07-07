@@ -33,7 +33,7 @@ export default function Signup({ visible, closeModal }) {
                 throw json.errors;
             }
             localStorage.setItem('token', json.token);
-            window.location.assign('/');
+            window.location.assign('/headbook');
         } catch (err) {
             setDisabled(false);
             setMessage(err[0].msg);
